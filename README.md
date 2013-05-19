@@ -7,32 +7,35 @@ first network controlled Club Mate dispenser
 
 Flachband von den Knöpfen
 -----------------
-1  LED 1
-2  LED 2
-3  LED 3
-4  LED 4
-5  LED 5
-6  LED 6
-7  
-8  
-9  
-10 
-11 
-12 
-13 Taster 1
-14 Taster 2
-15 Taster 3
-16 Taster 4
-17 Taster 5
-18 Taster 6
-19 
-20 
-21 
-22 
-23 Taster-GND
-24 
-25 
-26 LED-GND
+
+| Pin | Belegung |
+| --- | -------- |
+| 1   | LED 1    |
+| 2   | LED 2    |
+| 3   | LED 3    |
+| 4   | LED 4    |
+| 5   | LED 5    |
+| 6   | LED 6    |
+| 7   |
+| 8   |
+| 9   |
+| 10  |
+| 11  |
+| 12  |
+| 13  | Taster 1 |
+| 14  | Taster 2 |
+| 15  | Taster 3 |
+| 16  | Taster 4 |
+| 17  | Taster 5 |
+| 18  | Taster 6 |
+| 19  |
+| 20  |
+| 21  | 
+| 22  | 
+| 23  | Taster-GND |
+| 24  |
+| 25  |
+| 26  | LED-GND |
  
 Netzteil
 ----------

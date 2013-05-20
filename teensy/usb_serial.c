@@ -30,6 +30,9 @@
 // Version 1.6: fix zero length packet bug
 // Version 1.7: fix usb_serial_set_control
 
+#include <avr/io.h>
+#include <stdio.h>
+
 #define USB_SERIAL_PRIVATE_INCLUDE
 #include "usb_serial.h"
 
@@ -942,4 +945,6 @@ ISR(USB_COM_vect)
 	UECONX = (1<<STALLRQ) | (1<<EPEN);	// stall
 }
 
+FILE usb_serial_output = FDEV_SETUP_STREAM(usb_serial_putchar, NULL, _FDEV_SETUP_WRITE);
+FILE usb_serial_input = FDEV_SETUP_STREAM(NULL, usb_serial_getchar, _FDEV_SETUP_READ);
 

@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 
+FILE usb_serial_output;
+FILE usb_serial_input;
+
 //util
 void send_str(const char *s);
 uint8_t recv_str(char *buf, uint8_t size);

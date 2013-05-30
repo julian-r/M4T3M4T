@@ -23,11 +23,11 @@ int main(void)
   sei();
 
   // wait for enumeration
-  while (!usb_enumerated());
+  //while (!usb_enumerated());
 
   // wait for the user to run their terminal emulator program
   // which sets DTR to indicate it is ready to receive.
-  while (!(usb_serial_get_control() & USB_SERIAL_DTR));
+  //while (!(usb_serial_get_control() & USB_SERIAL_DTR));
 
   stdout = &usb_serial_output;
   stdin  = &usb_serial_input;
@@ -36,6 +36,9 @@ int main(void)
   DDRD |= (1 << PORTD6);
   uint8_t on = 0;
 
+  //output B0 is for cooling aggregate 
+  //B1 is for the internal fan
+  DDRB |= (1 << PORTB0)|(1 << PORTB1);
   //
   i2c_init();
 
@@ -68,9 +71,9 @@ int main(void)
     printf("temp %u", high);
     uint8_t low  = i2c_readNak();
     if (low)
-      printf(".5 °C\n\r");
+      printf(".5 °C\r\n");
     else
-      printf("   °C\n\r");
+      printf("   °C\r\n");
 
     _delay_ms(1000);
   }

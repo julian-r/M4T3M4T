@@ -372,13 +372,21 @@ int16_t usb_serial_getchar(void)
 		}	
 		SREG = intr_state;
 		return -1;
-	}
+        }
 	// take one byte out of the buffer
 	c = UEDATX;
 	// if buffer completely used, release it
 	if (!(UEINTX & (1<<RWAL))) UEINTX = 0x6B;
 	SREG = intr_state;
 	return c;
+}
+
+//
+uint16_t usb_serial_getchar_wait(void)
+{
+    while(!usb_serial_available()){}
+
+    return usb_serial_getchar();
 }
 
 // number of bytes available in the receive buffer
@@ -946,5 +954,5 @@ ISR(USB_COM_vect)
 }
 
 FILE usb_serial_output = FDEV_SETUP_STREAM(usb_serial_putchar, NULL, _FDEV_SETUP_WRITE);
-FILE usb_serial_input = FDEV_SETUP_STREAM(NULL, usb_serial_getchar, _FDEV_SETUP_READ);
+FILE usb_serial_input = FDEV_SETUP_STREAM(NULL, usb_serial_getchar_wait, _FDEV_SETUP_READ);
 
